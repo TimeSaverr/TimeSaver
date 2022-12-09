@@ -21,7 +21,7 @@ upload1,uploadsp,upload2 = st.columns((2,.1,2))
 
 with upload1:
     
-    ttl = f'<p style="font-family:sans-serif; font-size: 30px;">TimeSaver!</p>'
+    ttl = f'<p style="font-family:cursive; font-size: 30px;">TimeSaver!</p>'
     st.markdown(f"**<h1 style='text-align: center; '>{ttl}</h1>**", unsafe_allow_html=True)
     st.markdown("**TimeSaver is a Semi-Automated Exploratory Data Analysis Web App which can save lot of time and efforts from writting code for basic visualizations and statistical analysis. It helps in finding meaningful insights by doing preliminary analysis.‎ ‎ ‎ ‎ ‎(‎ ‎Made By [RAVINDER](https://www.linkedin.com/in/ravinder-j-37849b244/)‎ ‎)‎ ‎ ‎ ‎ ‎[Email](mailto:timesaver.ds@gmail.com)**")
     
@@ -181,6 +181,10 @@ else:
         st.write('- **It accepts only CSV format file of size maximum 200MB**')
         st.write('- **It accepts only 5 Lac Rows in the dataset even if the data has more more than 5 Lac Rows**')
         st.write('- **Dataset should be free from special characters for better Analysis**')
+        
+    quote = f'<p style="font-family:cursive;color:blue; font-size: 20px;">\" Data will talk to you if you are willing to listen \"</p>'
+    st.markdown(f"**<h1 style='text-align: center; '>{quote}</h1>**", unsafe_allow_html=True)   
+
         
 # social1,social2,social3 = st.columns((2,2,2))
 # icon_size=20
