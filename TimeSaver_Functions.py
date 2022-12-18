@@ -416,12 +416,15 @@ def Outliers (df):
             #del colout[0:1]
 
             form1 = st.form(key = 'Options')
-
-            all = st.checkbox("Select all")
-            if all:
-                selected_options = form1.multiselect("Select one or more Variables:",colout[1:],colout[1:])
-            else:
-                selected_options =  form1.multiselect("Select one or more Variables:",colout[1:])
+            
+            if len(colout[1:])<=10:
+                all = st.checkbox("Select all")
+                if all:
+                    selected_options = form1.multiselect("Select one or more Variables:",colout[1:],colout[1:])
+                else:
+                    selected_options =  form1.multiselect("Select one or more Variables:",colout[1:])
+            elif len(colout[1:])>10:
+                selected_options = form1.multiselect("Select one or more Variables (max 10):",colout[1:])[0:10]
                 
             if "load_statef" not in st.session_state:
                 st.session_state.load_statef = False
@@ -706,12 +709,16 @@ def Univariate_Continuous(df):
         if st.checkbox("Select Multiple Continuous Variables"):
 
             form1 = st.form(key = 'Options')
-
-            all = st.checkbox("Select all")
-            if all:
-                selected_options = form1.multiselect("Select one or more Variables:",colnum[1:],colnum[1:])
-            else:
-                selected_options =  form1.multiselect("Select one or more Variables:",colnum[1:])               
+            
+            if len(colnum[1:])<=10:
+                all = st.checkbox("Select all Continuous Variables")
+                if all:
+                    selected_options = form1.multiselect("Select one or more Variables:",colnum[1:],colnum[1:])
+                else:
+                    selected_options = form1.multiselect("Select one or more Variables:",colnum[1:])   
+                
+            elif len(colnum[1:])>10:
+                selected_options = form1.multiselect("Select one or more Variables (max 10):",colnum[1:])[0:10]        
                 
             if "load_statef" not in st.session_state:
                 st.session_state.load_statef = False
@@ -1285,11 +1292,15 @@ def Univariate_Categorical(df):
         
         if st.checkbox("Select Multiple Categorical Variables"):
             form1 = st.form(key = 'Options')
-            all = st.checkbox("Select all")
-            if all:
-                selected_options = form1.multiselect("Select one or more Variables:",colcat1,colcat1)
+            
+            if len(colcat1)<=10:            
+                all = st.checkbox("Select all Categorical Variables ")
+                if all:
+                    selected_options = form1.multiselect("Select one or more Variables:",colcat1,colcat1)
+                else:
+                    selected_options =  form1.multiselect("Select one or more Variables:",colcat1)                  
             else:
-                selected_options =  form1.multiselect("Select one or more Variables:",colcat1)
+                selected_options =  form1.multiselect("Select one or more Variables (max 10):",colcat1)[0:10]
                 
             if "load_statef" not in st.session_state:
                 st.session_state.load_statef = False  
