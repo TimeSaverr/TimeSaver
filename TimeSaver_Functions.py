@@ -206,6 +206,17 @@ CSS_Adjustments = """
                 .css-12x0zl8 { /*gap btwn Time saver and description*/
                     gap: 0rem;
                 }
+                
+                .css-12ttj6m { /*form border red colour*/
+                    border: 1px solid rgb(238 44 8 / 90%);
+                    border-radius: 0.8rem;
+                    padding: calc(1em - 1px);
+                }
+
+                .css-1cpxqw2 { /*submit button border red colour*/
+                    background-color: rgb(255, 255, 255);
+                    border: 1px solid rgb(240 4 4 / 85%);
+                }  
 
             <style>
             """
