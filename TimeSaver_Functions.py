@@ -1145,7 +1145,8 @@ def Univariate_Categorical(df):
                     st.plotly_chart(fig)
 
                 if 1 < df[col].nunique() <=20:
-                    st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                    #st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                    st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',f'**<FONT > (NaN will also be considered as a class)</FONT>**',unsafe_allow_html=True)
                     lis2=' ‎ ‎,‎ ‎ '.join(df[col].unique().astype(str))
                     st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{lis2}</FONT>**',unsafe_allow_html=True)
 
@@ -1176,7 +1177,8 @@ def Univariate_Categorical(df):
 
 
                 elif df[col].nunique()==1:
-                    st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                    #st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                    st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',f'**<FONT > (NaN will also be considered as a class)</FONT>**',unsafe_allow_html=True)
                     lis2=' ‎ ‎,‎ ‎ '.join(df[col].unique().astype(str))
                     st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{lis2}</FONT>**',unsafe_allow_html=True)
 
@@ -1186,7 +1188,8 @@ def Univariate_Categorical(df):
                     st.write(f"- **count of {df[col].name} {a.index[0]} is  :{a.values[0]}**")
 
                 else:
-                    st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                    #st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                    st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',f'**<FONT > (NaN will also be considered as a class)</FONT>**',unsafe_allow_html=True)
                     lis2=' ‎ ‎,‎ ‎ '.join(df[col].value_counts()[0:20].index.astype(str))
                     st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Top 20 Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{lis2}</FONT>**',unsafe_allow_html=True)
 
@@ -1400,7 +1403,8 @@ def Univariate_Categorical(df):
                         yaxis_title_text=df[col].name)
                             st.plotly_chart(fig)
 
-                            st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                            #st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                            st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',f'**<FONT > (NaN will also be considered as a class)</FONT>**',unsafe_allow_html=True)
                             lis2=' ‎ ‎,‎ ‎ '.join(df[col].unique().astype(str))
                             st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{lis2}</FONT>**',unsafe_allow_html=True)
 
@@ -1519,7 +1523,8 @@ def Univariate_Categorical(df):
 
                             st.write(f'**<FONT color="#FC7726">Top 10 Categories</FONT>**',unsafe_allow_html=True)
                             st.plotly_chart(fig)
-                            st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                            #st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',unsafe_allow_html=True)
+                            st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Number of Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{df[col].nunique()}</FONT>**',f'**<FONT > (NaN will also be considered as a class)</FONT>**',unsafe_allow_html=True)
                             lis2=' ‎ ‎,‎ ‎ '.join(df[col].value_counts()[0:20].index.astype(str))
                             st.write(f'**<FONT color="#FC7726">►‎ ‎ ‎ ‎ Top 20 Unique values of {df[col].name} :‎ ‎</FONT>**',f'**<FONT color="steelblue">{lis2}</FONT>**',unsafe_allow_html=True)
                             a = df[col].value_counts()
