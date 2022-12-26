@@ -1931,9 +1931,14 @@ def Line_Plot(df):
                             lin_ob = f'<p style="font-family:sans-serif; color:steelblue; font-size: 15px;">Observation :</p>'
                             st.markdown(f"**{lin_ob}**", unsafe_allow_html=True)
                             st.write(f'**►‎ ‎ ‎ ‎For {x[0]}**')
-                            st.write(f"- **For**",f'**<FONT color="#FC7726">{pd.to_datetime(df.iloc[np.argmax(df[x])][y])}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{x[0]}</FONT>**',f'**is high around**',f'**<FONT color="#FC7726">{str(mx[x].values[0][0])}</FONT>**',unsafe_allow_html=True)
-                            st.write(f"- **For**",f'**<FONT color="#FC7726">{pd.to_datetime(df.iloc[np.argmin(df[x])][y])}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{x[0]}</FONT>**',f'**is low around**',f'**<FONT color="#FC7726">{str(mn[x].values[0][0])}</FONT>**',unsafe_allow_html=True)
-
+                            
+                            if str(pd.to_datetime(df.iloc[np.argmax(df[x])][y]))[0:-4] == str(pd.to_datetime(df.iloc[np.argmin(df[x])][y]))[0:-4]:                                
+                                st.write(f"- **For**",f'**<FONT color="#FC7726">{str(pd.to_datetime(df.iloc[np.argmax(df[x])][y]))[-4:]}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{x[0]}</FONT>**',f'**is high around**',f'**<FONT color="#FC7726">{str(mx[x].values[0][0])}</FONT>**',unsafe_allow_html=True)
+                                st.write(f"- **For**",f'**<FONT color="#FC7726">{str(pd.to_datetime(df.iloc[np.argmin(df[x])][y]))[-4:]}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{x[0]}</FONT>**',f'**is low around**',f'**<FONT color="#FC7726">{str(mn[x].values[0][0])}</FONT>**',unsafe_allow_html=True)
+                            else:
+                                st.write(f"- **For**",f'**<FONT color="#FC7726">{pd.to_datetime(df.iloc[np.argmax(df[x])][y])}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{x[0]}</FONT>**',f'**is high around**',f'**<FONT color="#FC7726">{str(mx[x].values[0][0])}</FONT>**',unsafe_allow_html=True)
+                                st.write(f"- **For**",f'**<FONT color="#FC7726">{pd.to_datetime(df.iloc[np.argmin(df[x])][y])}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{x[0]}</FONT>**',f'**is low around**',f'**<FONT color="#FC7726">{str(mn[x].values[0][0])}</FONT>**',unsafe_allow_html=True)
+                            
                     else:
                         if submit_button_l2 or st.session_state.load_stateline:
                             st.session_state.load_stateline = True
@@ -1960,9 +1965,15 @@ def Line_Plot(df):
                                 mx=pd.DataFrame(df[clolumn].iloc[max_index:max_index+1])
                                 mn=pd.DataFrame(df[clolumn].iloc[min_index:min_index+1])
                                 st.write(f'**►‎ ‎ ‎ ‎For {clolumn}**')
-                                st.write(f"- **For**",f'**<FONT color="#FC7726">{pd.to_datetime(df.iloc[np.argmax(df[clolumn])][y])}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{clolumn}</FONT>**',f'**is high around**',f'**<FONT color="#FC7726">{str(mx[clolumn].values[0])}</FONT>**',unsafe_allow_html=True)
-                                st.write(f"- **For**",f'**<FONT color="#FC7726">{pd.to_datetime(df.iloc[np.argmin(df[clolumn])][y])}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{clolumn}</FONT>**',f'**is low around**',f'**<FONT color="#FC7726">{str(mn[clolumn].values[0])}</FONT>**',unsafe_allow_html=True)
+                                if str(pd.to_datetime(df.iloc[np.argmax(df[clolumn])][y]))[0:-4] == str(pd.to_datetime(df.iloc[np.argmin(df[clolumn])][y]))[0:-4]:
                                 
+                                    st.write(f"- **For**",f'**<FONT color="#FC7726">{str(pd.to_datetime(df.iloc[np.argmax(df[clolumn])][y]))[-4:]}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{clolumn}</FONT>**',f'**is high around**',f'**<FONT color="#FC7726">{str(mx[clolumn].values[0])}</FONT>**',unsafe_allow_html=True)
+                                    st.write(f"- **For**",f'**<FONT color="#FC7726">{str(pd.to_datetime(df.iloc[np.argmin(df[clolumn])][y]))[-4:]}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{clolumn}</FONT>**',f'**is low around**',f'**<FONT color="#FC7726">{str(mn[clolumn].values[0])}</FONT>**',unsafe_allow_html=True)
+                                
+                                else:
+                                    st.write(f"- **For**",f'**<FONT color="#FC7726">{pd.to_datetime(df.iloc[np.argmax(df[clolumn])][y])}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{clolumn}</FONT>**',f'**is high around**',f'**<FONT color="#FC7726">{str(mx[clolumn].values[0])}</FONT>**',unsafe_allow_html=True)
+                                    st.write(f"- **For**",f'**<FONT color="#FC7726">{pd.to_datetime(df.iloc[np.argmin(df[clolumn])][y])}‎ ‎,</FONT>**',f'**<FONT color="steelblue">{clolumn}</FONT>**',f'**is low around**',f'**<FONT color="#FC7726">{str(mn[clolumn].values[0])}</FONT>**',unsafe_allow_html=True)
+                                 
                 else:
                     with rowscat2:
                         st.write("##")
