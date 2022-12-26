@@ -181,6 +181,8 @@ else:
         st.write('- **It accepts only CSV format file of size maximum 200MB**')
         st.write('- **It accepts only 5 Lac Rows in the dataset even if the data has more more than 5 Lac Rows**')
         st.write('- **Dataset should be free from special characters for better Analysis**')
+        st.write('- **For TimeSeries analysis, column should be in datetime format**')
+        
         
     quote = f'<p style="font-family:cursive;color:blue; font-size: 20px;">\" Data will talk to you if you are willing to listen \"</p>'
     st.markdown(f"**<h1 style='text-align: center; '>{quote}</h1>**", unsafe_allow_html=True)   
