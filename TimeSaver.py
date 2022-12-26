@@ -182,6 +182,7 @@ else:
         st.write('- **It accepts only 5 Lac Rows in the dataset even if the data has more more than 5 Lac Rows**')
         st.write('- **Dataset should be free from special characters for better Analysis**')
         st.write('- **For TimeSeries analysis, column should be in datetime format**')
+        st.write(f'- **<FONT >Suitable for</FONT>**',f'**<FONT color="red">Desktop View</FONT>**',f'**<FONT >rather than mobile view</FONT>**',unsafe_allow_html=True)
         
         
     quote = f'<p style="font-family:cursive;color:blue; font-size: 20px;">\" Data will talk to you if you are willing to listen \"</p>'
