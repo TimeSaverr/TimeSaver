@@ -179,6 +179,7 @@ else:
         instruct = f'<p style="font-family:sans-serif;color:steelblue; font-size: 15px;">INSTRUCTIONS</p>'
         st.markdown(f"**<h1 style='text-align: left; '>{instruct}</h1>**", unsafe_allow_html=True)         
         st.write('- **It accepts only CSV format file of size maximum 200MB**')
+         st.write('- **Use sample data rather than population data**')
         st.write('- **It accepts only 5 Lac Rows in the dataset even if the data has more more than 5 Lac Rows**')
         st.write('- **Dataset should be free from special characters for better Analysis**')
         st.write('- **For TimeSeries analysis, column should be in datetime format**')
