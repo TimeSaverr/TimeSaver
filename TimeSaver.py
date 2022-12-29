@@ -175,7 +175,7 @@ else:
         
     with rowh2:
         st.write('##')
-        st.write('##')
+        #st.write('##')
         instruct = f'<p style="font-family:sans-serif;color:steelblue; font-size: 15px;">INSTRUCTIONS</p>'
         st.markdown(f"**<h1 style='text-align: left; '>{instruct}</h1>**", unsafe_allow_html=True)         
         st.write('- **It accepts only CSV format file of size maximum 200MB**')
