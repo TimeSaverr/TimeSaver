@@ -41,7 +41,7 @@ if data is not None:
         {'icon': "", 'label':"Outliers"},
         {'icon': "", 'label':"Uni & Bi-Variate Analysis"},
         {'icon': "", 'label':"Multi Variate Analysis"},
-        {'icon': "", 'label':"Time Series Analysis"},
+#         {'icon': "", 'label':"Time Series Analysis"},
         {'icon': "", 'label':"Group By"},
         {'icon': "", 'label':"Transformations"}]#,
         #{'icon': "", 'label':"Full Report"}]#,
