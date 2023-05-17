@@ -9,7 +9,7 @@ img=Image.open('download.png')
 
 st.set_page_config(page_title = 'TimeSaver - EDA',layout="wide",page_icon=img)
 
-#st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 st.markdown(custom_streamlit_named_footer, unsafe_allow_html=True)
 
@@ -41,7 +41,7 @@ if data is not None:
         {'icon': "", 'label':"Outliers"},
         {'icon': "", 'label':"Uni & Bi-Variate Analysis"},
         {'icon': "", 'label':"Multi Variate Analysis"},
-#         {'icon': "", 'label':"Time Series Analysis"},
+        {'icon': "", 'label':"Time Series Analysis"},
         {'icon': "", 'label':"Group By"},
         {'icon': "", 'label':"Transformations"}]#,
         #{'icon': "", 'label':"Full Report"}]#,
