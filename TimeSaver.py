@@ -9,7 +9,7 @@ img=Image.open('download.png')
 
 st.set_page_config(page_title = 'TimeSaver - EDA',layout="wide",page_icon=img)
 
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+#st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 st.markdown(custom_streamlit_named_footer, unsafe_allow_html=True)
 
