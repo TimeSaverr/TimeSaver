@@ -15,9 +15,9 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.figure_factory as ff
-from statsmodels.tsa.seasonal import DecomposeResult, seasonal_decompose
-from statsmodels.tsa.stattools import adfuller
-from statsmodels.graphics.tsaplots import acf,pacf
+# from statsmodels.tsa.seasonal import DecomposeResult, seasonal_decompose
+# from statsmodels.tsa.stattools import adfuller
+# from statsmodels.graphics.tsaplots import acf,pacf
 styles = [dict(selector="tr:hover",
                            props=[("background", "")]),
                       dict(selector="th", props=[("color", "black"),##eee
