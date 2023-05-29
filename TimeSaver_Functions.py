@@ -3247,7 +3247,8 @@ def Group_By(df):
 
                         gkk = df.groupby(by=Group_By,as_index=False)[Agg_column].agg(Agg_functions).reset_index()
                         gkk.columns = ['_'.join(col) for col in gkk.columns.values]
-                        st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                        #st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                        st.table(gkk.style.format(precision=2).set_table_styles(styles))
 
                     elif len(Group_By) == 1 and len(Agg_column) == 0 and len(Agg_functions) == 0 :
                         targetvar = df[Group_By[0]].value_counts().index.tolist()
