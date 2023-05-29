@@ -2727,7 +2727,7 @@ def Bivariate_Continuous_Vs_Categorical (df):
 
                             st.write(f'**<FONT color="#FC7726">{df[y].name} for {z} {df[x].name}</FONT>**',unsafe_allow_html=True)
 
-                            st.table(complete.style.set_precision(3).set_table_styles(styles))
+                            st.table(complete.style.format(precision=3).set_table_styles(styles))
 
                             cate1=df[x].value_counts().index.values.tolist()
                             a = pd.Series(df[y][df[x]==z])
@@ -2833,7 +2833,7 @@ def Bivariate_Continuous_Vs_Categorical (df):
                             st.write(f'**<FONT color="#FC7726">{df[y].name} for {z} {df[x].name}</FONT>**',unsafe_allow_html=True)
 
 
-                            st.table(complete.style.set_precision(3).set_table_styles(styles))
+                            st.table(complete.style.format(precision=3).set_table_styles(styles))
 
                             cate1=df[x].value_counts().index.values.tolist()
                             a = pd.Series(df[y][df[x]==z])
