@@ -299,11 +299,11 @@ def About_Dataset (df):
         st.table(g.style.set_table_styles(styles))
     head = f'<p style="font-family:sans-serif; color:steelblue; font-size: 15px;">Head of the Dataset</p>'
     st.markdown(f"**{head}**", unsafe_allow_html=True)
-    st.table(df.head().style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+    st.table(df.head().style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
     st.write("")
     tail = f'<p style="font-family:sans-serif; color:steelblue; font-size: 15px;">Tail of the Dataset</p>'
     st.markdown(f"**{tail}**", unsafe_allow_html=True)
-    st.table(df.tail().style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+    st.table(df.tail().style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
     
         
 def Missing_values(df):
@@ -327,7 +327,7 @@ def Missing_values(df):
 
     row0_NA01,row0_NAsp,row0_NA02 = st.columns((2,.1,2))
     with row0_NA01:            
-        st.table(missing_value_df.style.set_precision(2).set_table_styles(styles))
+        st.table(missing_value_df.style.format(precision=2).set_table_styles(styles))
     st.write("") 
     mul=[]
     with row0_NA02:
@@ -616,7 +616,7 @@ def Univariate_Continuous(df):
                                         """
                 # Inject CSS with Markdown
                 st.markdown(hide_table_row_stat, unsafe_allow_html=True)
-                st.table(stat.style.set_precision(2).set_table_styles(styles))
+                st.table(stat.style.format(precision=2).set_table_styles(styles))
 
                 with row16_4:
                     uvcontvar = f'<p style="font-family:sans-serif; color:green; font-size: 16px;">{df[col].name}</p>'
@@ -770,7 +770,7 @@ def Univariate_Continuous(df):
                         stat=stat.T
                         stat.reset_index(level=0, inplace=True)
                         stat.rename(columns = {'index':'Measures'}, inplace = True)
-                        st.table(stat.style.set_precision(2).set_table_styles(styles)) 
+                        st.table(stat.style.format(precision=2).set_table_styles(styles)) 
                     with uvcont_4:
                         uvcontvar = f'<p style="font-family:sans-serif; color:green; font-size: 16px;">{df[i].name}</p>'
                         st.markdown(f"**<h1 style='text-align: center; '>{uvcontvar}</h1>**", unsafe_allow_html=True)
@@ -910,7 +910,7 @@ def Univariate_Continuous_full(df):
                 stat=stat.T
                 stat.reset_index(level=0, inplace=True)
                 stat.rename(columns = {'index':'Measures'}, inplace = True)
-                st.table(stat.style.set_precision(2).set_table_styles(styles)) 
+                st.table(stat.style.format(precision=2).set_table_styles(styles)) 
             with uvcont_4:
 #                 uvcontvar = f'<p style="font-family:sans-serif; color:green; font-size: 16px;">{df[i].name}</p>'
 #                 st.markdown(f"**<h1 style='text-align: center; '>{uvcontvar}</h1>**", unsafe_allow_html=True)
@@ -1229,7 +1229,7 @@ def Univariate_Categorical(df):
                         mul_button = st.radio("",options = ['Top 10 Categories','Bottom 10 Categories'])
                         st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>',unsafe_allow_html=True)
                     st.write(f'**<FONT color="#FC7726">Considering‎ ‎ {category}‎ ‎ Category</FONT>**',unsafe_allow_html=True)
-                    st.table(df2.style.set_precision(2).set_table_styles(styles))
+                    st.table(df2.style.format(precision=2).set_table_styles(styles))
                     if df[col].nunique()<=20: 
                         categories = df[col].value_counts().index.tolist()
                         count = df[col].value_counts().values.tolist()
@@ -1239,7 +1239,7 @@ def Univariate_Categorical(df):
                         df1.loc[len(df1.index)] = ['Total (sum)',df1['COUNT'].sum(),100.00]
                         #st.table(df1)
 
-                        st.table(df1.style.set_precision(2).set_table_styles(styles))
+                        st.table(df1.style.format(precision=2).set_table_styles(styles))
 
                         values=df[col].value_counts()
                         labels=df[col].value_counts().index.tolist()
@@ -1263,7 +1263,7 @@ def Univariate_Categorical(df):
                             df1=pd.DataFrame({'CATEGORIES':categories,'COUNT':count,'FREQUENCY %':np.round(frequency,2)})
                             df1.loc[len(df1.index)] = ['Total (sum)',df1['COUNT'].sum(),100.00]
                             st.write(f'**<FONT color="#FC7726">Top 10 Categories</FONT>**',unsafe_allow_html=True)
-                            st.table(df1.style.set_precision(2).set_table_styles(styles))
+                            st.table(df1.style.format(precision=2).set_table_styles(styles))
 
                         elif mul_button == 'Bottom 10 Categories' :
                             categories = df[col].value_counts()[-10:].index.tolist()
@@ -1275,7 +1275,7 @@ def Univariate_Categorical(df):
                             df1=pd.DataFrame({'CATEGORIES':categories,'COUNT':count,'FREQUENCY %':np.round(frequency,2)})
                             df1.loc[len(df1.index)] = ['Total (sum)',df1['COUNT'].sum(),100.00]
                             st.write(f'**<FONT color="#FC7726">Bottom 10 Categories</FONT>**',unsafe_allow_html=True)
-                            st.table(df1.style.set_precision(2).set_table_styles(styles))
+                            st.table(df1.style.format(precision=2).set_table_styles(styles))
 
                         values=df[col].value_counts()[0:10].values.tolist()
                         values.append(df[col].value_counts()[10:].values.sum())
@@ -1448,7 +1448,7 @@ def Univariate_Categorical(df):
                                 """
                             # Inject CSS with Markdown
                             st.markdown(hide_table_row_uvcat, unsafe_allow_html=True)
-                            st.table(df1.style.set_precision(2).set_table_styles(styles))
+                            st.table(df1.style.format(precision=2).set_table_styles(styles))
                             values=df[col].value_counts()
                             labels=df[col].value_counts().index.tolist()
 
@@ -1564,7 +1564,7 @@ def Univariate_Categorical(df):
                             df1.loc[len(df1.index)] = ['Total (sum)',df1['COUNT'].sum(),100.00]
                             st.write("##")
                             st.write(f'**<FONT color="#FC7726">Top 10 Categories</FONT>**',unsafe_allow_html=True)
-                            st.table(df1.style.set_precision(2).set_table_styles(styles))
+                            st.table(df1.style.format(precision=2).set_table_styles(styles))
 
                             values=df[col].value_counts()[0:10].values.tolist()
                             values.append(df[col].value_counts()[10:].values.sum())
@@ -1723,7 +1723,7 @@ def Univariate_Categorical_full(df):
                         """
                     # Inject CSS with Markdown
                     st.markdown(hide_table_row_uvcat, unsafe_allow_html=True)
-                    st.table(df1.style.set_precision(2).set_table_styles(styles))
+                    st.table(df1.style.format(precision=2).set_table_styles(styles))
                     values=df[col].value_counts()
                     labels=df[col].value_counts().index.tolist()
 
@@ -1838,7 +1838,7 @@ def Univariate_Categorical_full(df):
                     df1.loc[len(df1.index)] = ['Total (sum)',df1['COUNT'].sum(),100.00]
                     st.write("##")
                     st.write(f'**<FONT color="#FC7726">Top 10 Categories</FONT>**',unsafe_allow_html=True)
-                    st.table(df1.style.set_precision(2).set_table_styles(styles))
+                    st.table(df1.style.format(precision=2).set_table_styles(styles))
 
                     values=df[col].value_counts()[0:10].values.tolist()
                     values.append(df[col].value_counts()[10:].values.sum())
@@ -1880,9 +1880,9 @@ def Line_Plot(df):
             mul_button = st.radio("",options = ['Head of Dataset','Tail of Dataset'])
             st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>',unsafe_allow_html=True)
             if mul_button=='Head of Dataset':
-                st.table(df.head(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.head(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             elif mul_button=='Tail of Dataset':
-                st.table(df.tail(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.tail(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             
             if "load_stateline" not in st.session_state:
                 st.session_state.load_stateline = False  
@@ -2025,9 +2025,9 @@ def Time_Resampling(df):
             mul_button = st.radio("",options = ['Head of Dataset','Tail of Dataset'])
             st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>',unsafe_allow_html=True)
             if mul_button=='Head of Dataset':
-                st.table(df.head(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.head(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             elif mul_button=='Tail of Dataset':
-                st.table(df.tail(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.tail(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             
             if "load_state_tsamp" not in st.session_state:
                 st.session_state.load_state_tsamp = False  
@@ -2063,7 +2063,7 @@ def Time_Resampling(df):
                             tab_title = f'<p style="font-family:sans-serif; font-size: 15px;">{agg}  of {df[x[0]].name} by {samp}</p>'
                             st.markdown(f"**<h1 style='text-align: center; '>{tab_title}</h1>**", unsafe_allow_html=True)
                             color = df.columns.tolist()
-                            st.table(df.style.set_precision(2).highlight_max(color,'#EDFB7C').highlight_min(color,'#B1F994').set_table_styles(styles))
+                            st.table(df.style.format(precision=2).highlight_max(color,'#EDFB7C').highlight_min(color,'#B1F994').set_table_styles(styles))
                     else:
                         with rowscat2:
                             fig = px.bar(df, y = x,text_auto=True)
@@ -2092,7 +2092,7 @@ def Time_Resampling(df):
                             tab_title = f'<p style="font-family:sans-serif; font-size: 15px;">{agg} by {samp}</p>'
                             st.markdown(f"**<h1 style='text-align: center; '>{tab_title}</h1>**", unsafe_allow_html=True)
                             color = df.columns.tolist()
-                            st.table(df.style.set_precision(2).highlight_max(color,'#EDFB7C').highlight_min(color,'#B1F994').set_table_styles(styles))
+                            st.table(df.style.format(precision=2).highlight_max(color,'#EDFB7C').highlight_min(color,'#B1F994').set_table_styles(styles))
                             #.highlight_max(['min','max','mean','frequency','% share'],'#EDFB7C').highlight_min(['min','max','mean','frequency','% share'],'#B1F994').
                 else:
                     with rowscat2:
@@ -2132,9 +2132,9 @@ def ETS_Decomposition(df):
             mul_button = st.radio("",options = ['Head of Dataset','Tail of Dataset'])
             st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>',unsafe_allow_html=True)
             if mul_button=='Head of Dataset':
-                st.table(df.head(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.head(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             elif mul_button=='Tail of Dataset':
-                st.table(df.tail(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.tail(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             
             if "load_state_ets" not in st.session_state:
                 st.session_state.load_state_ets = False  
@@ -2221,9 +2221,9 @@ def Stationarity_Check(df):
             mul_button = st.radio("",options = ['Head of Dataset','Tail of Dataset'])
             st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>',unsafe_allow_html=True)
             if mul_button=='Head of Dataset':
-                st.table(df.head(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.head(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             elif mul_button=='Tail of Dataset':
-                st.table(df.tail(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.tail(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             
             if "load_state_check" not in st.session_state:
                 st.session_state.load_state_check = False  
@@ -2299,9 +2299,9 @@ def ACF_PACF(df):
             mul_button = st.radio("",options = ['Head of Dataset','Tail of Dataset'])
             st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>',unsafe_allow_html=True)
             if mul_button=='Head of Dataset':
-                st.table(df.head(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.head(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             elif mul_button=='Tail of Dataset':
-                st.table(df.tail(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.tail(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             
             if "load_state_acf" not in st.session_state:
                 st.session_state.load_state_acf = False  
@@ -2788,7 +2788,7 @@ def Bivariate_Continuous_Vs_Categorical (df):
                                 else :
                                     st.write(f'**<FONT color="#FC7726">Showing Top 50 {sort_on.upper()} {df[y].name} in {asc_dsc} order </FONT>**',unsafe_allow_html=True)
 
-                                st.table(new1.iloc[0:50,:].style.set_precision(2).set_table_styles(styles))
+                                st.table(new1.iloc[0:50,:].style.format(precision=2).set_table_styles(styles))
 
                             else :
                                 if (sort_on == 'categories') or (sort_on == 'count') or (sort_on == 'frequency'):
@@ -2797,7 +2797,7 @@ def Bivariate_Continuous_Vs_Categorical (df):
                                 else :
                                     st.write(f'**<FONT color="#FC7726">Showing  {sort_on.upper()} {df[y].name} in {asc_dsc} order </FONT>**',unsafe_allow_html=True)
 
-                                st.table(new1.style.set_precision(2).highlight_max(['min','max','mean','frequency','% share'],'#EDFB7C').highlight_min(['min','max','mean','frequency','% share'],'#B1F994').set_table_styles(styles))
+                                st.table(new1.style.format(precision=2).highlight_max(['min','max','mean','frequency','% share'],'#EDFB7C').highlight_min(['min','max','mean','frequency','% share'],'#B1F994').set_table_styles(styles))
 
                             st.write("")
 
@@ -2882,7 +2882,7 @@ def Bivariate_Continuous_Vs_Categorical (df):
                                 else :
                                     st.write(f'**<FONT color="#FC7726">Showing Top 50 {sort_on.upper()} {df[y].name} in {asc_dsc} order </FONT>**',unsafe_allow_html=True)
                                 #st.table(new1.iloc[0:50,:].style.set_precision(2).set_table_styles(styles))
-                                st.table(new1.iloc[0:50,:].style.set_precision(2).set_table_styles(styles))
+                                st.table(new1.iloc[0:50,:].style.format(precision=2).set_table_styles(styles))
 
                             else :
                                 if (sort_on == 'categories') or (sort_on == 'count') or (sort_on == 'frequency'):
@@ -2890,7 +2890,7 @@ def Bivariate_Continuous_Vs_Categorical (df):
 
                                 else :
                                     st.write(f'**<FONT color="#FC7726">Showing  {sort_on.upper()} {df[y].name} in {asc_dsc} order </FONT>**',unsafe_allow_html=True)                
-                                st.table(new1.iloc[0:50,:].style.set_precision(2).highlight_max(
+                                st.table(new1.iloc[0:50,:].style.format(precision=2).highlight_max(
                                 ['min','max','mean','frequency'],'#EDFB7C').highlight_min(
                                     ['min','max','mean','frequency'],'#B1F994').set_table_styles(styles))
 
@@ -3066,7 +3066,7 @@ def Bivariate_Categorical_Vs_Categorical(df):
                     new=pd.concat(df2,axis=1)
                     st.write(f"**Frequency of {df[y].name} for {df[x].name}**")
 
-                    st.table(new.style.set_precision(2).set_table_styles(styles))
+                    st.table(new.style.format(precision=2).set_table_styles(styles))
 
                 with rowcatcat11:
                     new_title1 = f'<p style="font-family:sans-serif; color:steelblue; font-size: 16px;">Observations :</p>'
@@ -3194,7 +3194,7 @@ def Multi_Variate_Analysis(df):
                     if (df[i].dtypes!="object"):   
                         colnum.append(df[i].name)
                 if len(colnum)>0:
-                    st.table(df.loc[0:,d].corr().style.background_gradient(cmap='coolwarm').set_precision(2).set_table_styles(styles))
+                    st.table(df.loc[0:,d].corr().style.background_gradient(cmap='coolwarm').format(precision=2).set_table_styles(styles))
 
                 else:
                     st.write('**NO NUMERIC VARIABLE IS AVAILABLE**')
@@ -3338,10 +3338,10 @@ def Group_By(df):
                             st.table(gkk.style.set_table_styles(styles))
                         elif Agg_functions[0] == 'mean':
                             gkk = df.groupby(by=Group_By,as_index=False).mean()
-                            st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                            st.table(gkk.style.format(precision=2).set_table_styles(styles))
                         elif Agg_functions[0] == 'median':
                             gkk = df.groupby(by=Group_By,as_index=False).median()
-                            st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                            st.table(gkk.style.format(precision=2).set_table_styles(styles))
                         elif Agg_functions[0] == 'min':
                             gkk = df.groupby(by=Group_By,as_index=False).min()
                             st.table(gkk.style.set_table_styles(styles))
@@ -3350,10 +3350,10 @@ def Group_By(df):
                             st.table(gkk.style.set_table_styles(styles))
                         elif Agg_functions[0] == 'std':
                             gkk = df.groupby(by=Group_By,as_index=False).std()
-                            st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                            st.table(gkk.style.format(precision=2).set_table_styles(styles))
                         elif Agg_functions[0] == 'var':
                             gkk = df.groupby(by=Group_By,as_index=False).var()
-                            st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                            st.table(gkk.style.format(precision=2).set_table_styles(styles))
 
                     elif len(Group_By) > 1 and len(Agg_column) == 0 and  len(Agg_functions) == 1 :
                         if Agg_functions[0] == 'count' :
@@ -3364,10 +3364,10 @@ def Group_By(df):
                             st.table(gkk)
                         elif Agg_functions[0] == 'mean':
                             gkk = df.groupby(by=Group_By,as_index=False).mean()
-                            st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                            st.table(gkk.style.format(precision=2).set_table_styles(styles))
                         elif Agg_functions[0] == 'median':
                             gkk = df.groupby(by=Group_By,as_index=False).median()
-                            st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                            st.table(gkk.style.format(precision=2).set_table_styles(styles))
                         elif Agg_functions[0] == 'min':
                             gkk = df.groupby(by=Group_By,as_index=False).min()
                             st.table(gkk.style.set_table_styles(styles))
@@ -3376,10 +3376,10 @@ def Group_By(df):
                             st.table(gkk.style.set_table_styles(styles))
                         elif Agg_functions[0] == 'std':
                             gkk = df.groupby(by=Group_By,as_index=False).std()
-                            st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                            st.table(gkk.style.format(precision=2).set_table_styles(styles))
                         elif Agg_functions[0] == 'var':
                             gkk = df.groupby(by=Group_By,as_index=False).var()
-                            st.table(gkk.style.set_precision(2).set_table_styles(styles))
+                            st.table(gkk.style.format(precision=2).set_table_styles(styles))
 #         else:
 #             with rowmul2:
 #                 st.warning("**Please select Group By column**")
@@ -3713,9 +3713,9 @@ def Exp3(df):
             mul_button = st.radio("",options = ['Head of Dataset','Tail of Dataset'])
             st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>',unsafe_allow_html=True)
             if mul_button=='Head of Dataset':
-                st.table(df.head(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.head(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             elif mul_button=='Tail of Dataset':
-                st.table(df.tail(5).style.set_precision(2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
+                st.table(df.tail(5).style.format(precision=2).applymap(lambda x: f"color: {'red' if isinstance(x,str) else None}").set_table_styles(styles))
             
             if "load_stateline" not in st.session_state:
                 st.session_state.load_stateline = False  
