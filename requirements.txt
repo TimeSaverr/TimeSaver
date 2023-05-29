@@ -1,8 +1,8 @@
 streamlit==1.6.0
 hydralit_components==1.0.9
 Pillow==8.2.0
-pandas==1.2.4
-numpy==1.21.4
+pandas==1.2.3
+numpy==1.21.3
 missingno==0.4.2
 matplotlib==3.3.4
 seaborn==0.11.1
