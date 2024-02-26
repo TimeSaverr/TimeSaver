@@ -186,7 +186,7 @@ else:
         st.write(f'- **<FONT >Suitable for</FONT>**',f'**<FONT color="red">Desktop View</FONT>**',f'**<FONT >rather than mobile view</FONT>**',unsafe_allow_html=True)
         st.write('')
         
-    quote = f'<p style="font-family:cursive;color:blue; font-size: 20px;">\" will talk to you if you are willing to listen \"</p>'
+    quote = f'<p style="font-family:cursive;color:blue; font-size: 20px;">\"Data will talk to you if you are willing to listen \"</p>'
     st.markdown(f"**<h1 style='text-align: center; '>{quote}</h1>**", unsafe_allow_html=True)   
 
         
